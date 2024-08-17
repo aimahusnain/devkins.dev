@@ -1,7 +1,7 @@
 "use client";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import React, { useState } from "react";
-import { Button } from "../../../../../Devkins/src/components/ui/button";
-import { Input } from "../../../../../Devkins/src/components/ui/input";
 
 const gbToTb = (gigabytes: number): number => {
   return gigabytes / 1024;

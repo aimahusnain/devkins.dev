@@ -1,15 +1,6 @@
 "use client";
 import { Textarea } from "@/components/ui/textarea";
 import React, { useState } from "react";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 
 const CaseConverter = () => {
