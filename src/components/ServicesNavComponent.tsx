@@ -401,6 +401,7 @@ const ServicesDropdown = () => {
           <div className="w-1/4 bg-gray-200 p-4 rounded-lg mr-4">
             {services.map((service, index) => (
               <Link
+              key={index}
               onClick={handleLinkClick}
               href={`services/${service.link}`}>
               <div

@@ -47,7 +47,7 @@ const ContactUs: React.FC = () => {
       <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl p-8 shadow-2xl w-full max-w-6xl relative z-10 flex flex-col md:flex-row">
         <div className="md:w-1/2 pr-8 mb-8 md:mb-0">
           <h2 className="text-4xl font-bold text-white mb-6">Contact Us</h2>
-          <p className="text-gray-300 mb-6">We'd love to hear from you! Reach out to us using the form or our contact details below.</p>
+          <p className="text-gray-300 mb-6">We&apos;d love to hear from you! Reach out to us using the form or our contact details below.</p>
           <div className="space-y-4">
             <div className="flex items-center text-gray-300">
               <FaEnvelope className="mr-3" />

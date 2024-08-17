@@ -221,7 +221,7 @@ const AboutUs: React.FC = () => {
         >
           <CarouselContent className="-ml-1 ">
           {carouselItems.map((item: any, index: any) => (
-            <CarouselItem className="pl-1 md:basis-1/2 grid lg:basis-1/3">
+            <CarouselItem key={index} className="pl-1 md:basis-1/2 grid lg:basis-1/3">
               <div className="p-1 flex flex-col gap-4 text-white border border-white rounded-xl px-6 py-3 mr-[20px]">
                 <p>{item.rating}</p>
                 <p>
