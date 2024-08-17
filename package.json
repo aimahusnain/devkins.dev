@@ -37,6 +37,7 @@
     "tsparticles": "^3.5.0"
   },
   "devDependencies": {
+    "@types/color-convert": "^2.0.3",
     "@types/convert-units": "^2.3.9",
     "@types/node": "^20",
     "@types/react": "^18",
