@@ -33,7 +33,7 @@ const GraphicDesign = () => {
             className="mb-1
           text-zinc-400 font-bold"
           >
-            Devsinc’s Mobile App Development Services encompasses building of
+            Devkins&apos;s Mobile App Development Services encompasses building of
             this field encompasses various platforms, including iOS (Apple),
             Android (Google), and others, and it plays a crucial role in shaping
             the way people interact with technology in our increasingly

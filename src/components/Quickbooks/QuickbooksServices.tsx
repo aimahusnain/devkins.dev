@@ -48,7 +48,7 @@ const ServiceCard = ({ service, index, isExpanded, toggleExpand }: any) => {
             )}
           </AnimatePresence>
           <Link
-            href={`/services${service.link}`}
+            href={`/services/quickbooks${service.link}`}
             className="flex items-center text-white font-semibold group-hover:text-blue-200 transition-colors duration-300 mt-auto"
           >
             Learn More
