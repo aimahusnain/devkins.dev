@@ -15,6 +15,7 @@
 
 # production
 /build
+/src/app/(routes)/tools
 
 # misc
 .DS_Store
