@@ -34,35 +34,35 @@ const services: Service[] = [
     icon: "🛒",
   },
   {
-    link: '/cms-integration',
+    link: "/cms-integration",
     title: "CMS Integration",
     description:
       "Easy content management with WordPress, Joomla, or Drupal integration.",
     icon: "🔧",
   },
   {
-    link: '/seo-friendly-design',
+    link: "/seo-friendly-design",
     title: "SEO-friendly Design",
     description:
       "Improved visibility and rankings on search engine results pages.",
     icon: "🔍",
   },
   {
-    link: '/website-redesign',
+    link: "/website-redesign",
     title: "Website Redesign",
     description:
       "Modernizing existing websites for better functionality and aesthetics.",
     icon: "🔄",
   },
   {
-    link: '/maintenance-and-support',
+    link: "/maintenance-and-support",
     title: "Maintenance and Support",
     description:
       "Ongoing services to keep your website secure and performing optimally.",
     icon: "🛠️",
   },
   {
-    link: '/performance-optimization',
+    link: "/performance-optimization",
     title: "Performance Optimization",
     description:
       "Enhancing page load speed, mobile responsiveness, and user experience.",
@@ -81,37 +81,38 @@ const ServicesSection: React.FC = () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <Link href={`website-development${service.link}`}>
-            <motion.div
-              key={index}
-              className="bg-white rounded-lg shadow-lg overflow-hidden"
-              whileHover={{ scale: 1.03, y: -5 }}
-              onHoverStart={() => setHoveredService(index)}
-              onHoverEnd={() => setHoveredService(null)}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <div className="p-6">
-                <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-xl font-semibold mb-2 text-indigo-600">
-                  {service.title}
-                </h3>
-                <motion.div
-                  className="h-0 overflow-hidden"
-                  animate={{ height: hoveredService === index ? "auto" : 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <p className="text-gray-600 text-sm">{service.description}</p>
-                </motion.div>
-              </div>
+            <Link key={index} href={`website-development${service.link}`}>
               <motion.div
-                className="h-1 bg-gradient-to-r from-blue-500 to-purple-500"
-                initial={{ width: 0 }}
-                animate={{ width: hoveredService === index ? "100%" : 0 }}
-                transition={{ duration: 0.3 }}
-              />
-            </motion.div>
+                className="bg-white rounded-lg shadow-lg overflow-hidden"
+                whileHover={{ scale: 1.03, y: -5 }}
+                onHoverStart={() => setHoveredService(index)}
+                onHoverEnd={() => setHoveredService(null)}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <div className="p-6">
+                  <div className="text-4xl mb-4">{service.icon}</div>
+                  <h3 className="text-xl font-semibold mb-2 text-indigo-600">
+                    {service.title}
+                  </h3>
+                  <motion.div
+                    className="h-0 overflow-hidden"
+                    animate={{ height: hoveredService === index ? "auto" : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <p className="text-gray-600 text-sm">
+                      {service.description}
+                    </p>
+                  </motion.div>
+                </div>
+                <motion.div
+                  className="h-1 bg-gradient-to-r from-blue-500 to-purple-500"
+                  initial={{ width: 0 }}
+                  animate={{ width: hoveredService === index ? "100%" : 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.div>
             </Link>
           ))}
         </div>
