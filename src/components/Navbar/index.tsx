@@ -13,11 +13,13 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  const closeNavbar = () => setIsMenuOpen(false);
+
   return (
     <nav className="sticky h-14 inset-x-0 top-0 z-30 w-full border-b border-gray-200 bg-white shadow-sm">
       <MaxWidthWrapper>
         <div className="flex h-14 items-center justify-between">
-          <Link href="/" className="flex z-40 font-semibold">
+          <Link href="/" className="flex z-40 font-semibold" onClick={closeNavbar}>
             <span>DevKins</span>
           </Link>
 
@@ -38,6 +40,7 @@ const Navbar = () => {
                 variant: "ghost",
                 size: "sm",
               })}
+              onClick={closeNavbar}
             >
               Portfolio
             </Link>
@@ -47,6 +50,7 @@ const Navbar = () => {
                 variant: "ghost",
                 size: "sm",
               })}
+              onClick={closeNavbar}
             >
               About
             </Link>
@@ -56,6 +60,7 @@ const Navbar = () => {
                 variant: "ghost",
                 size: "sm",
               })}
+              onClick={closeNavbar}
             >
               Careers
             </Link>
@@ -65,6 +70,7 @@ const Navbar = () => {
                 variant: "ghost",
                 size: "sm",
               })}
+              onClick={closeNavbar}
             >
               Tools
             </Link>
@@ -73,6 +79,7 @@ const Navbar = () => {
               className={buttonVariants({
                 size: "sm",
               })}
+              onClick={closeNavbar}
             >
               Get started <ArrowRight className="ml-1.5 h-5 w-5" />
             </Link>
@@ -85,7 +92,7 @@ const Navbar = () => {
             } transition-transform duration-300 ease-in-out sm:hidden`}
           >
             <div className="flex flex-col h-full justify-start items-start space-y-4 p-6 pt-20">
-              <ServicesDropdown />
+              <ServicesDropdown closeNavbar={closeNavbar} />
               <Link
                 href="/portfolio"
                 className={buttonVariants({
@@ -93,7 +100,7 @@ const Navbar = () => {
                   size: "lg",
                   className: "w-full justify-start",
                 })}
-                onClick={toggleMenu}
+                onClick={closeNavbar}
               >
                 Portfolio
               </Link>
@@ -104,7 +111,7 @@ const Navbar = () => {
                   size: "lg",
                   className: "w-full justify-start",
                 })}
-                onClick={toggleMenu}
+                onClick={closeNavbar}
               >
                 About
               </Link>
@@ -115,7 +122,7 @@ const Navbar = () => {
                   size: "lg",
                   className: "w-full justify-start",
                 })}
-                onClick={toggleMenu}
+                onClick={closeNavbar}
               >
                 Careers
               </Link>
@@ -126,7 +133,7 @@ const Navbar = () => {
                   size: "lg",
                   className: "w-full justify-start",
                 })}
-                onClick={toggleMenu}
+                onClick={closeNavbar}
               >
                 Tools
               </Link>
@@ -136,7 +143,7 @@ const Navbar = () => {
                   size: "lg",
                   className: "w-full",
                 })}
-                onClick={toggleMenu}
+                onClick={closeNavbar}
               >
                 Get started <ArrowRight className="ml-1.5 h-5 w-5" />
               </Link>

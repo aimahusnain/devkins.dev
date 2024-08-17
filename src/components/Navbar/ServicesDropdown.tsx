@@ -1,47 +1,64 @@
-'use client'
+"use client";
 
 import { useState, useRef, useEffect } from "react";
-import { ChevronDown, ChevronRight, X, ArrowRight, ChevronLeft } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronRight,
+  X,
+  ArrowRight,
+  ChevronLeft,
+} from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import { Service, services } from "@/lib/config";
 
-const ServicesDropdown = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState<Service | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 640);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  const toggleDropdown = () => setIsOpen(!isOpen);
-
-  const handleServiceClick = (service: Service) => {
-    setSelectedService(selectedService === service ? null : service);
-  };
-
-  const closeDropdown = () => {
-    setIsOpen(false);
-    setSelectedService(null);
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+const ServicesDropdown = ({ closeNavbar }: any) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedService, setSelectedService] = useState<Service | null>(null);
+    const [isMobile, setIsMobile] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
+    const router = useRouter();
+  
+    useEffect(() => {
+      const checkMobile = () => setIsMobile(window.innerWidth < 640);
+      checkMobile();
+      window.addEventListener("resize", checkMobile);
+      return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+  
+    const toggleDropdown = () => setIsOpen(!isOpen);
+  
+    const handleServiceClick = (service: Service, isLink: boolean = false) => {
+      if (isLink) {
         closeDropdown();
+        closeNavbar();
+        router.push(service.link);
+      } else {
+        setSelectedService(selectedService === service ? null : service);
       }
     };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+  
+    const closeDropdown = () => {
+      setIsOpen(false);
+      setSelectedService(null);
     };
-  }, []);
+  
+    useEffect(() => {
+      const handleClickOutside = (event: MouseEvent) => {
+        if (
+          dropdownRef.current &&
+          !dropdownRef.current.contains(event.target as Node)
+        ) {
+          closeDropdown();
+        }
+      };
+  
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, []);
 
   const MobileView = () => (
     <div className="fixed inset-0 bg-white z-50 overflow-y-auto">
@@ -54,13 +71,24 @@ const ServicesDropdown = () => {
       <div className="p-4">
         {selectedService ? (
           <>
-            <Button variant="ghost" onClick={() => setSelectedService(null)} className="mb-4">
+            <Button
+              variant="ghost"
+              onClick={() => setSelectedService(null)}
+              className="mb-4"
+            >
               <ChevronLeft className="w-4 h-4 mr-2" /> Back to Services
             </Button>
             <h3 className="text-2xl font-bold mb-4">{selectedService.name}</h3>
             {selectedService.description.map((desc, idx) => (
-              <Link href={desc.link} key={idx} className="block p-4 bg-gray-50 rounded-lg mb-4 hover:bg-gray-100 transition-colors">
-                <h4 className="font-semibold text-blue-600 mb-2">{desc.title}</h4>
+              <Link
+                href={desc.link}
+                key={idx}
+                className="block p-4 bg-gray-50 rounded-lg mb-4 hover:bg-gray-100 transition-colors"
+                onClick={closeDropdown}
+              >
+                <h4 className="font-semibold text-blue-600 mb-2">
+                  {desc.title}
+                </h4>
                 <p className="text-sm text-gray-600 mb-2">{desc.desc}</p>
                 <span className="text-blue-500 text-sm flex items-center">
                   Learn more <ArrowRight className="w-4 h-4 ml-1" />
@@ -74,11 +102,22 @@ const ServicesDropdown = () => {
               <li key={index}>
                 <Button
                   variant="ghost"
-                  className="w-full justify-between px-4 py-3 text-left hover:bg-gray-100 transition-colors"
-                  onClick={() => handleServiceClick(service)}
+                  className="flex w-full justify-between px-4 py-3 hover:bg-gray-100 transition-colors"
                 >
-                  {service.name}
-                  <ChevronRight className="w-4 h-4" />
+                  <Link 
+                    href={service.link} 
+                    className="flex-grow text-left"
+                    onClick={() => handleServiceClick(service, true)}
+                  >
+                    {service.name}
+                  </Link>
+                  <ChevronRight 
+                    className="w-4 h-4" 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleServiceClick(service);
+                    }}
+                  />
                 </Button>
               </li>
             ))}
@@ -97,10 +136,24 @@ const ServicesDropdown = () => {
             <li key={index}>
               <Button
                 variant="ghost"
-                className={`w-full justify-start px-2 py-1 text-left hover:bg-white/10 rounded transition-colors text-sm ${selectedService === service ? 'bg-white/20 font-semibold' : ''}`}
-                onClick={() => handleServiceClick(service)}
+                className={`w-full justify-between px-2 py-1 text-left hover:bg-white/10 rounded transition-colors text-sm ${
+                  selectedService === service ? "bg-white/20 font-semibold" : ""
+                }`}
               >
-                {service.name}
+                <Link 
+                  href={service.link} 
+                  className="flex-grow"
+                  onClick={() => handleServiceClick(service, true)}
+                >
+                  {service.name}
+                </Link>
+                <ChevronRight 
+                  className="w-4 h-4" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleServiceClick(service);
+                  }}
+                />
               </Button>
             </li>
           ))}
@@ -110,18 +163,33 @@ const ServicesDropdown = () => {
         {selectedService ? (
           <>
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-2xl font-bold text-gray-800">{selectedService.name}</h2>
-              <Button variant="ghost" size="sm" onClick={() => setSelectedService(null)} className="text-gray-500 hover:text-gray-700">
+              <h2 className="text-2xl font-bold text-gray-800">
+                {selectedService.name}
+              </h2>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setSelectedService(null)}
+                className="text-gray-500 hover:text-gray-700"
+              >
                 <X className="w-5 h-5" />
               </Button>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {selectedService.description.map((desc, idx) => (
-                <Link href={desc.link} key={idx} className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors group">
-                  <h3 className="font-semibold text-blue-600 group-hover:text-blue-700 transition-colors mb-2">{desc.title}</h3>
+                <Link
+                  href={desc.link}
+                  key={idx}
+                  className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors group"
+                  onClick={closeDropdown}
+                >
+                  <h3 className="font-semibold text-blue-600 group-hover:text-blue-700 transition-colors mb-2">
+                    {desc.title}
+                  </h3>
                   <p className="text-sm text-gray-600 mb-2">{desc.desc}</p>
                   <span className="text-blue-500 group-hover:text-blue-600 transition-colors text-sm flex items-center">
-                    Learn more <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    Learn more{" "}
+                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </Link>
               ))}
@@ -138,13 +206,17 @@ const ServicesDropdown = () => {
 
   return (
     <div className="relative w-full sm:w-auto" ref={dropdownRef}>
-      <Button 
-        variant="ghost" 
-        onClick={toggleDropdown} 
+      <Button
+        variant="ghost"
+        onClick={toggleDropdown}
         className="w-full sm:w-auto justify-between hover:bg-gray-100 transition-colors group"
       >
-        Services 
-        <ChevronDown className={`w-4 ml-1 transition-transform group-hover:text-blue-600 ${isOpen ? 'rotate-180 text-blue-600' : ''}`} />
+        Services
+        <ChevronDown
+          className={`w-4 ml-1 transition-transform group-hover:text-blue-600 ${
+            isOpen ? "rotate-180 text-blue-600" : ""
+          }`}
+        />
       </Button>
       {isOpen && (isMobile ? <MobileView /> : <DesktopView />)}
     </div>
