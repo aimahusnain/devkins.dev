@@ -1,6 +1,8 @@
 'use client'
 
 import React, { useEffect, useRef } from 'react';
+import Particles from 'react-tsparticles';
+import { loadFull } from 'tsparticles';
 
 const HeroSection: React.FC = () => {
   const shapesRef = useRef<HTMLDivElement>(null);
@@ -40,17 +42,12 @@ const HeroSection: React.FC = () => {
             <br />
             Web Solutions
           </h1>
-          <p className="mb-6 md:mb-8 text-lg md:text-xl text-white max-w-2xl mx-auto">
-            Crafting cutting-edge digital experiences that captivate and inspire.
+          <p className="mb-8 text-xl text-gray-200">
+            Transforming ideas into powerful, responsive, and user-friendly web experiences.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <button className="rounded-full bg-white px-6 py-2 md:px-8 md:py-3 font-semibold text-purple-600 transition-all hover:bg-purple-100 hover:shadow-lg">
-              Get Started
-            </button>
-            <button className="rounded-full border-2 border-white px-6 py-2 md:px-8 md:py-3 font-semibold text-white transition-all hover:bg-white hover:text-purple-600">
-              Learn More
-            </button>
-          </div>
+          <button className="rounded-full bg-white px-8 py-3 font-semibold text-purple-900 transition-all hover:bg-purple-100 hover:shadow-lg">
+            Get Started
+          </button>
         </div>
       </div>
     </div>

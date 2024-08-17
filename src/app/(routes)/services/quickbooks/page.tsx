@@ -1,66 +1,56 @@
 "use client";
-import React, { useRef } from "react";
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import Image from "next/image";
+import Faqs from "@/components/Quickbooks/Faqs";
+import QuickbooksServices from "@/components/Quickbooks/QuickbooksServices";
+import Whychooseus from "@/components/Quickbooks/Whychooseus";
 import {
   ArrowRight,
   BarChart2,
-  Check,
   DollarSign,
-  FileText,
+  FileText
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-import Whychooseus from "@/components/Quickbooks/Whychooseus";
-import Faqs from "@/components/Quickbooks/Faqs";
-import QuickbooksServices from "@/components/Quickbooks/QuickbooksServices";
 
 const QuickBooks = () => {
-  const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
   return (
     <>
-        <section id="home" className="relative overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
-            <div className="relative z-10 text-center md:text-left md:w-2/3 lg:w-1/2">
-              <h2 className="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl mb-4">
-                Streamline Your <span className="text-blue-600">Finances</span>{" "}
-                with Expert Bookkeeping
-              </h2>
-              <p className="text-xl text-gray-500 mb-8">
-                Professional bookkeeping solutions tailored for your business
-                needs. From QuickBooks to Xero, we&apos;ve got you covered.
-              </p>
-              <Link
-                href="#contact"
-                className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-semibold rounded-full text-white bg-blue-600 hover:bg-blue-700 transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-              >
-                Get Started
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </div>
+      <section id="home" className="relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+          <div className="relative z-10 text-center md:text-left md:w-2/3 lg:w-1/2">
+            <h2 className="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl mb-4">
+              Streamline Your <span className="text-blue-600">Finances</span>{" "}
+              with Expert Bookkeeping
+            </h2>
+            <p className="text-xl text-gray-500 mb-8">
+              Professional bookkeeping solutions tailored for your business
+              needs. From QuickBooks to Xero, we&apos;ve got you covered.
+            </p>
+            <Link
+              href="#contact"
+              className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-semibold rounded-full text-white bg-blue-600 hover:bg-blue-700 transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            >
+              Get Started
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
           </div>
-          <div className="absolute top-0 right-0 w-full md:w-1/2 h-full bg-gradient-to-bl from-blue-200 to-indigo-200 transform skew-y-6 md:skew-y-0 md:-skew-x-6 -mr-32 md:-mr-16 z-0"></div>
-          <div className="absolute md:flex hidden top-0 right-0 w-full h-full items-center justify-center md:justify-end z-0 pointer-events-none">
-            <div className="relative w-full max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl">
-              <Image
-                alt="Hero Section Image"
-                src="/herosectionimage-without-background.png"
-                layout="responsive"
-                width={600}
-                height={700}
-                objectFit="contain"
-                priority
-              />
-            </div>
+        </div>
+        <div className="absolute top-0 right-0 w-full md:w-1/2 h-full bg-gradient-to-bl from-blue-200 to-indigo-200 transform skew-y-6 md:skew-y-0 md:-skew-x-6 -mr-32 md:-mr-16 z-0"></div>
+        <div className="absolute md:flex hidden top-0 right-0 w-full h-full items-center justify-center md:justify-end z-0 pointer-events-none">
+          <div className="relative w-full max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl">
+            <Image
+              alt="Hero Section Image"
+              src="/herosectionimage-without-background.png"
+              layout="responsive"
+              width={600}
+              height={700}
+              objectFit="contain"
+              priority
+            />
           </div>
-        </section>
+        </div>
+      </section>
+
       <div className="min-h-screen bg-gradient-to-br pt-20 from-blue-50 to-indigo-100">
         <main>
           <QuickbooksServices />
