@@ -1,161 +1,295 @@
-import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <>
-      <MaxWidthWrapper className="mb-12 mt-28 sm:mt-40 flex flex-col items-center justify-center text-center">
-        <div className="mx-auto mb-4 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full border border-gray-200 bg-white px-7 py-2 shadow-md backdrop-blur transition-all hover:border-gray-300 hover:bg-white/50">
-          <p className="text-sm font-semibold text-gray-700">
-            DevKins is now public!
-          </p>
-        </div>
-        <h1 className="max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl">
-          Be the <span className="text-purple-600">market leader</span> in your
-          industry.
-        </h1>
-        <p className="mt-5 max-w-prose text-zinc-700 sm:text-lg">
-          Access 2,000+ passionate and experienced software engineers with
-          skillsets in 100+ technologies, in your timezone.
-        </p>
-
-        <Link
-          className={buttonVariants({
-            size: "lg",
-            className: "mt-5",
-          })}
-          href="/dashboard"
-          target="_blank"
+    <main className="min-h-screen bg-white text-gray-800">
+      <motion.section
+        id="home"
+        className="h-screen flex items-center justify-center relative overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <motion.div 
+          className="absolute inset-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.6 }}
+          transition={{ duration: 2 }}
         >
-          Get started <ArrowRight className="ml-2 h-5 w-5" />
-        </Link>
-      </MaxWidthWrapper>
-
-      {/* value proposition section */}
-      <div>
-        <div className="relative isolate">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-          >
-            <div
+          {[...Array(250)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute text-blue-500"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
+              transition={{ duration: 1, delay: i * 0.01 }}
               style={{
-                clipPath:
-                  "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                fontSize: `${Math.random() * 14 + 8}px`,
+                animation: `float ${Math.random() * 10 + 5}s infinite ease-in-out`,
               }}
-              className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-            />
-          </div>
-
-          <div>
-            <div className="mx-auto max-w-6xl px-6 lg:px-8">
-              <div className="mt-16 flow-root sm:mt-24">
-                <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
-                  <Image
-                    src="/dashboard-preview.jpg"
-                    alt="product preview"
-                    width={1364}
-                    height={866}
-                    quality={100}
-                    className="rounded-md bg-white p-2 sm:p-8 md:p-20 shadow-2xl ring-1 ring-gray-900/10"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+            >
+              {Math.random() > 0.5 ? "0" : "1"}
+            </motion.div>
+          ))}
+        </motion.div>
+        <motion.div 
+          className="container mx-auto px-4 text-center relative z-10"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          <h1 className="text-6xl font-extrabold mb-6 text-gray-800">
+            Redefining Digital Frontiers
+          </h1>
+          <p className="text-xl mb-10 max-w-2xl mx-auto text-gray-600">
+            Devkins crafts innovative tech solutions that propel businesses into
+            the future.
+          </p>
+          <motion.a
+            href="#services"
+            className="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition-colors duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <div
-              style={{
-                clipPath:
-                  "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-              }}
-              className="relative left-[calc(50%-13rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-36rem)] sm:w-[72.1875rem]"
-            />
-          </div>
-        </div>
-      </div>
+            Explore Our Expertise
+          </motion.a>
+        </motion.div>
+      </motion.section>
 
-      {/* Feature section */}
-      <div className="mx-auto mb-32 mt-32 max-w-5xl sm:mt-56">
-        <div className="mb-12 px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl sm:text-center">
-            <h2 className="mt-2 font-bold text-4xl text-gray-900 sm:text-5xl">
-              Start chatting in minutes
-            </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              Chatting to your PDF files has never been easier than with Quill.
-            </p>
-          </div>
-        </div>
-
-        {/* steps */}
-        <ol className="my-8 space-y-4 pt-8 md:flex md:space-x-12 md:space-y-0">
-          <li className="md:flex-1">
-            <div className="flex flex-col space-y-2 border-l-4 border-zinc-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4">
-              <span className="text-sm font-medium text-blue-600">Step 1</span>
-              <span className="text-xl font-semibold">
-                Sign up for an account
-              </span>
-              <span className="mt-2 text-zinc-700">
-                Either starting out with a free plan or choose our{" "}
-                <Link
-                  href="/pricing"
-                  className="text-blue-700 underline underline-offset-2"
+      <section id="services" className="py-20 bg-gray-100 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <motion.h2 
+            className="text-5xl font-bold mb-16 text-center text-gray-800"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Our Services
+          </motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                className="relative group p-8 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300"
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10 }}
+              >
+                <motion.div 
+                  className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-blue-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
+                ></motion.div>
+                <motion.div 
+                  className="h-24 w-24 mx-auto bg-gradient-to-r from-blue-400 to-blue-600 rounded-full flex items-center justify-center mb-6"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.8 }}
                 >
-                  pro plan
-                </Link>
-                .
-              </span>
-            </div>
-          </li>
-          <li className="md:flex-1">
-            <div className="flex flex-col space-y-2 border-l-4 border-zinc-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4">
-              <span className="text-sm font-medium text-blue-600">Step 2</span>
-              <span className="text-xl font-semibold">
-                Upload your PDF file
-              </span>
-              <span className="mt-2 text-zinc-700">
-                We&apos;ll process your file and make it ready for you to chat
-                with.
-              </span>
-            </div>
-          </li>
-          <li className="md:flex-1">
-            <div className="flex flex-col space-y-2 border-l-4 border-zinc-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4">
-              <span className="text-sm font-medium text-blue-600">Step 3</span>
-              <span className="text-xl font-semibold">
-                Start asking questions
-              </span>
-              <span className="mt-2 text-zinc-700">
-                It&apos;s that simple. Try out Quill today - it really takes
-                less than a minute.
-              </span>
-            </div>
-          </li>
-        </ol>
+                  <i className={`fas ${service.icon} text-4xl text-white`}></i>
+                </motion.div>
+                <h3 className="text-2xl font-semibold mb-4 text-gray-800 text-center">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 text-center">
+                  {service.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-        <div className="mx-auto max-w-6xl px-6 lg:px-8">
-          <div className="mt-16 flow-root sm:mt-24">
-            <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
-              <Image
-                src="/file-upload-preview.jpg"
-                alt="uploading preview"
-                width={1419}
-                height={732}
-                quality={100}
-                className="rounded-md bg-white p-2 sm:p-8 md:p-20 shadow-2xl ring-1 ring-gray-900/10"
+      <section id="work" className="py-20 bg-white text-gray-800">
+        <div className="container mx-auto px-4">
+          <motion.h2 
+            className="text-5xl font-bold mb-16 text-center"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Our Work
+          </motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {projects.map((project, index) => (
+              <motion.div
+                key={index}
+                className="relative overflow-hidden rounded-2xl shadow-lg group"
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.03 }}
+              >
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={600}
+                  height={400}
+                  layout="responsive"
+                  className="transition-transform duration-300 group-hover:scale-110"
+                />
+                <motion.div 
+                  className="absolute inset-0 bg-gradient-to-b from-transparent to-white flex flex-col justify-end p-6"
+                  initial={{ opacity: 0.8, y: 20 }}
+                  whileHover={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <h3 className="text-2xl font-semibold mb-2 text-gray-800">
+                    {project.title}
+                  </h3>
+                  <p className="mb-4 text-gray-600">{project.description}</p>
+                  <motion.a
+                    href={project.link}
+                    className="inline-block bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-300"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Learn More
+                  </motion.a>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="py-20 bg-gradient-to-r from-blue-50 to-blue-100 text-gray-800">
+        <div className="container mx-auto px-4">
+          <motion.h2 
+            className="text-4xl font-bold mb-12 text-center"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Get in Touch
+          </motion.h2>
+          <motion.form 
+            className="max-w-lg mx-auto"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <motion.input
+                type="text"
+                placeholder="Your Name"
+                className="w-full p-3 rounded-lg bg-white border border-gray-300 focus:border-blue-500 outline-none placeholder-gray-500"
+                whileFocus={{ scale: 1.02 }}
+              />
+              <motion.input
+                type="email"
+                placeholder="Your Email"
+                className="w-full p-3 rounded-lg bg-white border border-gray-300 focus:border-blue-500 outline-none placeholder-gray-500"
+                whileFocus={{ scale: 1.02 }}
               />
             </div>
-          </div>
+            <motion.textarea
+              placeholder="Your Message"
+              rows={4}
+              className="w-full mb-4 p-3 rounded-lg bg-white border border-gray-300 focus:border-blue-500 outline-none placeholder-gray-500"
+              whileFocus={{ scale: 1.02 }}
+            ></motion.textarea>
+            <motion.button
+              type="submit"
+              className="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Send Message
+            </motion.button>
+          </motion.form>
         </div>
-      </div>
-    </>
+      </section>
+    </main>
   );
 }
+
+// services and projects arrays remain unchanged
+
+const services = [
+  {
+    title: "AI-Driven Development",
+    description:
+      "Harness the power of artificial intelligence to create smarter, more efficient applications.",
+    icon: "fa-robot",
+  },
+  {
+    title: "Blockchain Solutions",
+    description:
+      "Implement secure, transparent, and decentralized systems using cutting-edge blockchain technology.",
+    icon: "fa-link",
+  },
+  {
+    title: "IoT Ecosystems",
+    description:
+      "Connect and optimize your devices in a seamless Internet of Things network.",
+    icon: "fa-network-wired",
+  },
+  {
+    title: "AR/VR Experiences",
+    description:
+      "Create immersive augmented and virtual reality solutions for various industries.",
+    icon: "fa-vr-cardboard",
+  },
+  {
+    title: "Quantum Computing",
+    description:
+      "Explore the frontiers of computational power with quantum-inspired algorithms.",
+    icon: "fa-atom",
+  },
+  {
+    title: "Cybersecurity",
+    description:
+      "Protect your digital assets with advanced threat detection and prevention systems.",
+    icon: "fa-shield-alt",
+  },
+];
+
+const projects = [
+  {
+    title: "NeuroTech AI Assistant",
+    description:
+      "An AI-powered virtual assistant for healthcare professionals.",
+    image: "/projects/neurotech.jpg",
+    link: "#",
+  },
+  {
+    title: "BlockChain Supply Chain",
+    description:
+      "A blockchain-based supply chain management system for global logistics.",
+    image: "/projects/blockchain-supply.jpg",
+    link: "#",
+  },
+  {
+    title: "SmartCity IoT Platform",
+    description:
+      "An IoT platform for managing and optimizing urban infrastructure.",
+    image: "/projects/smartcity.jpg",
+    link: "#",
+  },
+  {
+    title: "Quantum Encryption System",
+    description:
+      "A next-generation encryption system leveraging quantum computing principles.",
+    image: "/projects/quantum-encryption.jpg",
+    link: "#",
+  },
+];

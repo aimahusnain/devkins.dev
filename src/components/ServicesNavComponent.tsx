@@ -24,7 +24,7 @@ const ServicesNavCompo = () => {
         Services <ChevronDown className="w-4 ml-1" />
       </Button>
       <div
-        className={`fixed top-12 left-0 w-full h-[70vh] p-4 bg-white z-50 transition-opacity duration-300 ${
+        className={`fixed top-12 left-0 w-full h-fit p-4 bg-white z-50 transition-opacity duration-300 ${
           isHovered ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
@@ -46,7 +46,7 @@ const ServicesNavCompo = () => {
               </Link>
             ))}
           </div>
-          <div className="w-3/4 p-4 rounded-lg bg-gray-100 overflow-y-auto max-h-[70vh]">
+          <div className="w-3/4 p-4 rounded-lg bg-gray-100 overflow-y-auto max-h-[34rem]">
             {hoveredService ? (
               <div className="">
                 <h2 className="text-2xl font-bold">{hoveredService.name}</h2>
