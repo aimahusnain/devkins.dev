@@ -112,7 +112,7 @@ const AvantGardeLogoDesignPage = () => {
         <section className="py-20 px-4 bg-gradient-to-br from-purple-900 to-black text-center">
           <h2 className="text-5xl font-bold mb-6">Ready to Redefine Your Brand?</h2>
           <p className="text-xl mb-12 max-w-2xl mx-auto text-gray-300">
-            Let's create a logo that's as unique and revolutionary as your brand.
+            Let&apos;s create a logo that&apos;s as unique and revolutionary as your brand.
           </p>
           <motion.button
             className="bg-white text-purple-900 px-8 py-3 rounded-full text-lg font-semibold hover:bg-gray-200 transition-colors"

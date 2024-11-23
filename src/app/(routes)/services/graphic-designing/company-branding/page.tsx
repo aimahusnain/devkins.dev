@@ -106,7 +106,7 @@ const CompanyBranding: React.FC = () => {
       <section className="py-20 bg-indigo-600 text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Elevate Your Brand?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">Let's create a powerful brand identity that sets you apart from the competition and drives your business forward.</p>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">Let&apos;s create a powerful brand identity that sets you apart from the competition and drives your business forward.</p>
           <motion.button 
             className="bg-white text-indigo-600 px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors"
             whileHover={{ scale: 1.05 }}
