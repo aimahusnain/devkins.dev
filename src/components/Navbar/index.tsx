@@ -7,6 +7,7 @@ import MaxWidthWrapper from "../MaxWidthWrapper";
 import ServicesDropdown from "./ServicesDropdown";
 import { buttonVariants } from "../ui/button";
 import ServicesNavCompo from "../ServicesNavComponent";
+import Image from 'next/image'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,7 +21,9 @@ const Navbar = () => {
       <MaxWidthWrapper>
         <div className="flex h-14 items-center justify-between">
           <Link href="/" className="flex z-40 font-semibold" onClick={closeNavbar}>
-            <span>DevKins</span>
+            <span>
+              <Image src="/devkins_logo.svg" alt="Devkins Logo" width={100} height={50} />
+            </span>
           </Link>
 
           {/* Mobile menu button */}

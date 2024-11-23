@@ -284,8 +284,7 @@ export const services: Service[] = [
     ],
   },
   {
-    link: "/services/",
-
+    link: "/services/graphic-designing",
     name: "Graphic Design",
     description: [
       {
