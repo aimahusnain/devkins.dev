@@ -84,3 +84,61 @@
   scrollbar-width: thin;
   scrollbar-color: #cbd5e1 transparent;
 }
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #22D3EE;
+  --color-secondary: #0EA5E9;
+  --color-accent: #F59E0B;
+  --color-background: #F0F9FF;
+  --color-text: #1E293B;
+}
+
+@layer base {
+  body {
+    @apply bg-[color:var(--color-background)] text-[color:var(--color-text)];
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-[color:var(--color-primary)] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[color:var(--color-secondary)] transition-colors duration-300;
+  }
+  .btn-secondary {
+    @apply bg-white text-[color:var(--color-primary)] border-2 border-[color:var(--color-primary)] px-6 py-3 rounded-lg font-semibold hover:bg-[color:var(--color-primary)] hover:text-white transition-colors duration-300;
+  }
+}
+
+/* Playful animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}

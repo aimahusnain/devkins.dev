@@ -8,7 +8,7 @@ const FinancialManagementPage: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Financial Management Services | NextGen Financial</title>
+        <title>Financial Management Services | Devkins</title>
         <meta
           name="description"
           content="Expert financial management services to optimize your business finances and drive growth."
@@ -20,7 +20,7 @@ const FinancialManagementPage: React.FC = () => {
           <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex justify-between items-center">
               <Link href="/" className="text-3xl font-extrabold text-indigo-600">
-                NextGen Financial
+                Devkins
               </Link>
               <div className="hidden md:flex space-x-8">
                 <Link href="/" className="text-gray-700 hover:text-indigo-600 transition duration-300">

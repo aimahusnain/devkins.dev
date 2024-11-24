@@ -1,42 +1,44 @@
-'use client'
+"use client";
 
-import { useState, useEffect, useCallback } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { usePathname } from 'next/navigation'
-import { motion, AnimatePresence } from 'framer-motion'
-import { navItems } from '@/lib/config'
-import { cn } from '@/lib/utils'
+import { useState, useEffect, useCallback } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { navItems } from "@/lib/config";
+import { cn } from "@/lib/utils";
 
 export default function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
-  const [activeMobileDropdown, setActiveMobileDropdown] = useState<string[]>([])
-  const pathname = usePathname()
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeMobileDropdown, setActiveMobileDropdown] = useState<string[]>(
+    []
+  );
+  const pathname = usePathname();
 
-  const closeMobileMenu = useCallback(() => setMobileMenuOpen(false), [])
+  const closeMobileMenu = useCallback(() => setMobileMenuOpen(false), []);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
-        setMobileMenuOpen(false)
+        setMobileMenuOpen(false);
       }
-    }
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
-    closeMobileMenu()
-  }, [pathname, closeMobileMenu])
+    closeMobileMenu();
+  }, [pathname, closeMobileMenu]);
 
   const toggleMobileDropdown = (title: string) => {
     setActiveMobileDropdown((prev) =>
       prev.includes(title)
         ? prev.filter((item) => item !== title)
         : [...prev, title]
-    )
-  }
+    );
+  };
 
   return (
     <nav className="bg-white/70 backdrop-blur-md border-b shadow-sm fixed w-full top-0 z-40">
@@ -44,23 +46,22 @@ export default function Navbar() {
         <div className="flex justify-between h-20">
           <div className="flex-shrink-0 flex items-center">
             <Link href="/">
-            <Image
-  src="/devkins_full_logo.svg"
-  alt="Devkins Logo"
-  width={150}
-  height={80}
-  priority
-  className="cursor-pointer hidden md:block"
-/>
-<Image
-  src="/devkins_short_logo.svg"
-  alt="Devkins Logo"
-  width={60}
-  height={80}
-  priority
-  className="cursor-pointer block md:hidden"
-/>
-
+              <Image
+                src="/devkins_full_logo.svg"
+                alt="Devkins Logo"
+                width={150}
+                height={80}
+                priority
+                className="cursor-pointer hidden md:block"
+              />
+              <Image
+                src="/devkins_short_logo.svg"
+                alt="Devkins Logo"
+                width={60}
+                height={80}
+                priority
+                className="cursor-pointer block md:hidden"
+              />
             </Link>
           </div>
 
@@ -85,7 +86,7 @@ export default function Navbar() {
         closeMobileMenu={closeMobileMenu}
       />
     </nav>
-  )
+  );
 }
 
 function DesktopMenu({ activeDropdown, setActiveDropdown }: any) {
@@ -95,11 +96,11 @@ function DesktopMenu({ activeDropdown, setActiveDropdown }: any) {
         <div key={item.title} className="relative">
           <button
             className={cn(
-              'px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center group',
-              'bg-white shadow-sm',
+              "px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center group",
+              "bg-white shadow-sm",
               activeDropdown === item.title
-                ? 'text-blue-600 ring-2 ring-blue-200'
-                : 'text-gray-700 hover:text-blue-600 hover:ring-2 hover:ring-blue-100'
+                ? "text-blue-600 ring-2 ring-blue-200"
+                : "text-gray-700 hover:text-blue-600 hover:ring-2 hover:ring-blue-100"
             )}
             onClick={() =>
               item.submenu
@@ -113,8 +114,10 @@ function DesktopMenu({ activeDropdown, setActiveDropdown }: any) {
             {item.submenu && (
               <ChevronIcon
                 className={cn(
-                  'ml-1.5 h-4 w-4 transition-transform duration-300 ease-out',
-                  activeDropdown === item.title ? 'rotate-180 text-blue-600' : 'text-gray-400 group-hover:text-blue-600'
+                  "ml-1.5 h-4 w-4 transition-transform duration-300 ease-out",
+                  activeDropdown === item.title
+                    ? "rotate-180 text-blue-600"
+                    : "text-gray-400 group-hover:text-blue-600"
                 )}
               />
             )}
@@ -122,7 +125,7 @@ function DesktopMenu({ activeDropdown, setActiveDropdown }: any) {
         </div>
       ))}
     </div>
-  )
+  );
 }
 
 function DesktopDropdownMenu({ activeDropdown }: any) {
@@ -163,10 +166,11 @@ function DesktopDropdownMenu({ activeDropdown }: any) {
 
                         {category.submenu && (
                           <div className="border-l-2 border-gray-100">
-                            <div 
+                            <div
                               className={cn(
-                                'space-y-1',
-                                category.submenu.length > 3 && 'max-h-[250px] overflow-y-auto pr-4 custom-scrollbar'
+                                "space-y-1",
+                                category.submenu.length > 3 &&
+                                  "max-h-[250px] overflow-y-auto pr-4 custom-scrollbar"
                               )}
                             >
                               {category.submenu.map((subItem) => (
@@ -199,7 +203,7 @@ function DesktopDropdownMenu({ activeDropdown }: any) {
         </motion.div>
       )}
     </AnimatePresence>
-  )
+  );
 }
 
 function MobileMenuToggle({ mobileMenuOpen, setMobileMenuOpen }: any) {
@@ -234,10 +238,15 @@ function MobileMenuToggle({ mobileMenuOpen, setMobileMenuOpen }: any) {
         </svg>
       </button>
     </div>
-  )
+  );
 }
 
-function MobileMenu({ mobileMenuOpen, activeMobileDropdown, toggleMobileDropdown, closeMobileMenu }: any) {
+function MobileMenu({
+  mobileMenuOpen,
+  activeMobileDropdown,
+  toggleMobileDropdown,
+  closeMobileMenu,
+}: any) {
   return (
     <AnimatePresence>
       {mobileMenuOpen && (
@@ -245,7 +254,7 @@ function MobileMenu({ mobileMenuOpen, activeMobileDropdown, toggleMobileDropdown
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
           className="lg:hidden fixed inset-x-0 top-20 bg-white shadow-lg z-50 overflow-y-auto max-h-[calc(100vh-5rem)]"
         >
           <div className="px-4 py-6 space-y-4">
@@ -265,8 +274,9 @@ function MobileMenu({ mobileMenuOpen, activeMobileDropdown, toggleMobileDropdown
                     <span>{item.title}</span>
                     <ChevronIcon
                       className={cn(
-                        'ml-2 h-5 w-5 transition-transform duration-300',
-                        activeMobileDropdown.includes(item.title) && 'rotate-180'
+                        "ml-2 h-5 w-5 transition-transform duration-300",
+                        activeMobileDropdown.includes(item.title) &&
+                          "rotate-180"
                       )}
                     />
                   </button>
@@ -283,7 +293,7 @@ function MobileMenu({ mobileMenuOpen, activeMobileDropdown, toggleMobileDropdown
                 {item.submenu && activeMobileDropdown.includes(item.title) && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
+                    animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.3 }}
                     className="pl-4 pb-4 space-y-6"
@@ -327,7 +337,7 @@ function MobileMenu({ mobileMenuOpen, activeMobileDropdown, toggleMobileDropdown
         </motion.div>
       )}
     </AnimatePresence>
-  )
+  );
 }
 
 function ChevronIcon({ className }: any) {
@@ -345,6 +355,5 @@ function ChevronIcon({ className }: any) {
         d="M19 9l-7 7-7-7"
       />
     </svg>
-  )
+  );
 }
-

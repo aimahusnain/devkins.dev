@@ -15,7 +15,7 @@ const QuickBooksXeroPage: React.FC = () => {
   return (
     <>
       <Head>
-        <title>QuickBooks & Xero Expertise | NextGen Financial</title>
+        <title>QuickBooks & Xero Expertise | Devkins</title>
         <meta
           name="description"
           content="Expert QuickBooks and Xero services to optimize your accounting software and streamline your financial processes."
@@ -27,7 +27,7 @@ const QuickBooksXeroPage: React.FC = () => {
           <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex justify-between items-center">
               <Link className="text-3xl font-extrabold text-purple-600" href="/">
-                  NextGen Financial
+                  Devkins
               </Link>
               <div className="hidden md:flex space-x-8">
                 <Link className="text-gray-700 hover:text-purple-600 transition duration-300" href="/#services">
@@ -161,7 +161,7 @@ const QuickBooksXeroPage: React.FC = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
-                <h3 className="text-2xl font-bold mb-4">NextGen Financial</h3>
+                <h3 className="text-2xl font-bold mb-4">Devkins</h3>
                 <p className="text-gray-400">
                   Expert bookkeeping and financial services for your business
                   success.
@@ -197,7 +197,7 @@ const QuickBooksXeroPage: React.FC = () => {
               </div>
             </div>
             <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-              <p>&copy; 2024 NextGen Financial. All rights reserved.</p>
+              <p>&copy; 2024 Devkins. All rights reserved.</p>
             </div>
           </div>
         </footer>

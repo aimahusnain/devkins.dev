@@ -14,7 +14,7 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: "How does NextGen Financial redefine finance?",
+    question: "How does Devkins redefine finance?",
     answer: "We blend AI-powered analytics with visual storytelling, transforming complex financial data into clear, actionable insights for your business.",
     icon: "🚀"
   },
