@@ -50,14 +50,37 @@
 }
 
 
-.today {
-  background-color: #48bb78; /* or any color you prefer */
-  color: white;
-  font-weight: bold;
-  border-radius: 50px;
-  padding-left: 10px;
-  padding-right: 10px;
-  width: fit-content;
+/* In your globals.css */
+
+/* Minimal modern scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
 }
 
+::-webkit-scrollbar-track {
+  background: transparent;
+}
 
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Hide scrollbar when not hovering */
+::-webkit-scrollbar-thumb {
+  visibility: hidden;
+}
+
+*:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}

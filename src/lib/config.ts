@@ -248,7 +248,6 @@ export const services: Service[] = [
 
   {
     link: "/services/",
-
     name: "Mobile Application Development",
     description: [
       {
@@ -283,6 +282,7 @@ export const services: Service[] = [
       },
     ],
   },
+
   {
     link: "/services/graphic-designing",
     name: "Graphic Design",
@@ -324,6 +324,7 @@ export const services: Service[] = [
       },
     ],
   },
+
   {
     link: "/services/",
 
@@ -371,9 +372,9 @@ export const services: Service[] = [
       },
     ],
   },
+
   {
     link: "/services/",
-
     name: "Video Editing",
     description: [
       {
@@ -408,6 +409,8 @@ export const services: Service[] = [
       },
     ],
   },
+
+  // Not Done
   {
     link: "/services/quickbooks",
     name: "QuickBooks",
@@ -458,5 +461,437 @@ export const services: Service[] = [
         desc: "Assist clients in migrating their financial data from legacy systems to QuickBooks for seamless transition and continuity.",
       },
     ],
+  },
+];
+
+export type SubMenuItem = {
+  title: string;
+  href: string;
+  description?: string;
+  submenu?: SubMenuItem[];
+};
+
+export type MenuItem = {
+  title: string;
+  href: string;
+  description?: string;
+  submenu?: SubMenuItem[];
+};
+
+export const navItems: MenuItem[] = [
+  {
+    title: "Services",
+    href: "/services",
+    submenu: [
+      {
+        title: "Design & Branding",
+        href: "/services/design-branding",
+        description: "Create stunning visual identities and memorable brands",
+        submenu: [
+          {
+            title: "Wireframing and Prototyping",
+            href: "/services/design-branding/wireframing&prototyping",
+            description:
+              "Blueprint your digital products with precision and clarity",
+          },
+          {
+            title: "Responsive Design",
+            href: "/services/design-branding/responsive-design",
+            description: "Create intuitive and engaging user experiences",
+          },
+          {
+            title: "User Interface (UI) Design",
+            href: "/services/design-branding/ui",
+            description: "Develop a unique and memorable brand presence",
+          },
+
+          {
+            title: "User Experience (UX) Design",
+            href: "/services/design-branding/ux",
+            description:
+              "Crafting visually appealing and user-friendly website designs",
+          },
+
+          {
+            title: "UI/UX Audits",
+            href: "/services/design-branding/ui&ux-audits",
+            description:
+              "Assessing existing website designs to identify areas for improvement",
+          },
+
+          {
+            title: "Website Design",
+            href: "/services/design-branding/website-design",
+            description:
+              "Crafting visually appealing and user-friendly website designs",
+          },
+        ],
+      },
+
+      {
+        title: "Website Development",
+        href: "/services/development",
+        description: "Build robust and scalable digital solutions",
+        submenu: [
+          {
+            title: "Custom Website Design",
+            href: "/services/website-development/custom-website-design",
+            description: "Planning layouts and user flow.",
+          },
+          {
+            title: "Responsive Web Design",
+            href: "/services/website-development/responsive-web-design",
+            description: "Designs for all devices.",
+          },
+          {
+            title: "E-commerce Website Design",
+            href: "/services/website-development/e-commerce-web-design",
+            description: "Interface design for e-commerce.",
+          },
+          {
+            title: "CMS Integration",
+            href: "/services/website-development/cms-integration",
+            description: "Improving usability.",
+          },
+          {
+            title: "SEO-friendly Design",
+            href: "/services/website-development/seo-friendly-design",
+            description: "Brand-focused designs.",
+          },
+          {
+            title: "Website Redesign",
+            href: "/services/website-development/website-redesign",
+            description: "Refreshing website designs.",
+          },
+          {
+            title: "Maintenance and Support",
+            href: "/services/website-development/maintenance-and-support",
+            description: "Ongoing website care.",
+          },
+          {
+            title: "Performance Optimization",
+            href: "/services/website-development/performance-optimization",
+            description: "Boosting website speed.",
+          },
+        ],
+      },
+
+      {
+        title: "Digital Marketing",
+        href: "/services/marketing",
+        description: "Reach and engage your target audience",
+        submenu: [
+          {
+            title: "Search Engine Optimization (SEO)",
+            href: "/services/",
+            description: "Improving search rankings.",
+          },
+          {
+            title: "Pay-Per-Click Advertising (PPC)",
+            href: "/services/",
+            description: "Managing paid ads.",
+          },
+          {
+            title: "Social Media Marketing (SMM)",
+            href: "/services/",
+            description: "Engaging audiences via social media.",
+          },
+          {
+            title: "Content Marketing",
+            href: "/services/",
+            description: "Creating valuable content.",
+          },
+          {
+            title: "Email Marketing",
+            href: "/services/",
+            description: "Running email campaigns.",
+          },
+          {
+            title: "Influencer Marketing",
+            href: "/services/",
+            description: "Partnering with influencers.",
+          },
+          {
+            title: "Online Reputation Management (ORM)",
+            href: "/services/",
+            description: "Managing brand reputation.",
+          },
+          {
+            title: "Marketing Automation",
+            href: "/services/",
+            description: "Automating marketing tasks.",
+          },
+        ],
+      },
+
+      {
+        title: "Graphic Design",
+        href: "/services/graphic-designing",
+        description: "Reach and engage your target audience",
+        submenu: [
+          {
+            title: "Logo Design",
+            href: "/services/",
+            description: "Designing unique logos.",
+          },
+          {
+            title: "Print Design",
+            href: "/services/",
+            description: "Designs for printed materials.",
+          },
+          {
+            title: "Digital Illustration",
+            href: "/services/",
+            description: "Creating custom illustrations.",
+          },
+          {
+            title: "Web Graphics",
+            href: "/services/",
+            description: "Graphics for websites.",
+          },
+          {
+            title: "Social Media Graphics",
+            href: "/services/",
+            description: "Visuals for social platforms.",
+          },
+          {
+            title: "Packaging Design",
+            href: "/services/",
+            description: "Product packaging designs.",
+          },
+          {
+            title: "Infographic Design",
+            href: "/services/",
+            description: "Data visualization designs.",
+          },
+          
+          
+        ],
+      },
+
+      {
+        title: "Mobile Application Development",
+        href: "/services/mobile-development",
+        description: "Reach and engage your target audience",
+        submenu: [
+          {
+            title: "iOS App Development",
+            href: "/services/",
+            description: "Creating apps for iOS.",
+          },
+          {
+            title: "Android App Development",
+            href: "/services/",
+            description: "Building apps for Android.",
+          },
+          {
+            title: "Cross-Platform App Development",
+            href: "/services/",
+            description: "Apps for iOS, Android, and web.",
+          },
+          {
+            title: "App Maintenance and Support",
+            href: "/services/",
+            description: "Ongoing app updates and support.",
+          },
+          {
+            title: "App Store Optimization (ASO)",
+            href: "/services/",
+            description: "Improving app visibility and ranking.",
+          },
+          {
+            title: "Backend Development",
+            href: "/services/",
+            description: "Building app backend systems.",
+          },
+          
+          
+        ],
+      },
+
+      {
+        title: "UI/UX Design For Web",
+        href: "/services/ui-ux-design-for-web",
+        description: "Reach and engage your target audience",
+        submenu: [
+          {
+            title: "Wireframing and Prototyping",
+            href: "/services/",
+            description: "Visualizing layout and user flow.",
+          },
+          {
+            title: "Responsive Design",
+            href: "/services/",
+            description: "Designs that adapt to all devices.",
+          },
+          {
+            title: "User Interface (UI) Design",
+            href: "/services/",
+            description: "Designing website interface elements.",
+          },
+          {
+            title: "UI/UX Audits",
+            href: "/services/",
+            description: "Improving usability and experience.",
+          },
+          {
+            title: "Website Design",
+            href: "/services/",
+            description: "Creating branded, user-friendly designs.",
+          },
+          {
+            title: "User Experience (UX) Design",
+            href: "/services/",
+            description: "Designing intuitive, user-friendly sites.",
+          },
+          
+        ],
+      },
+
+      {
+        title: "UI/UX Design For Mobile",
+        href: "/services/ui-ux-design-for-mobile",
+        description: "Reach and engage your target audience",
+        submenu: [
+          {
+            title: "Mobile App Design",
+            href: "/services/",
+            description: "Designing engaging mobile interfaces.",
+          },
+          {
+            title: "Responsive Mobile Design",
+            href: "/services/",
+            description: "Optimizing designs for mobile devices.",
+          },
+          {
+            title: "Mobile Prototyping",
+            href: "/services/",
+            description: "Creating interactive mobile app prototypes.",
+          },
+          {
+            title: "Mobile Usability Testing",
+            href: "/services/",
+            description: "Gathering user feedback to refine designs.",
+          },
+          {
+            title: "Cross-Platform Design",
+            href: "/services/",
+            description: "Designing apps for multiple platforms.",
+          },
+          {
+            title: "Mobile UI Patterns",
+            href: "/services/",
+            description: "Using UI patterns to improve usability.",
+          },
+          
+          
+        ],
+      },
+
+      {
+        title: "Video Editing",
+        href: "/services/video-editing",
+        description: "Reach and engage your target audience",
+        submenu: [
+          {
+            title: "QuickBooks Setup and Installation",
+            href: "/services/",
+            description: "Setting up QuickBooks for businesses.",
+          },
+          {
+            title: "QuickBooks Training",
+            href: "/services/",
+            description: "Training clients on QuickBooks usage.",
+          },
+          {
+            title: "QuickBooks Integration Services",
+            href: "/services/",
+            description: "Integrating QuickBooks with other software.",
+          },
+          {
+            title: "QuickBooks Customization",
+            href: "/services/",
+            description: "Customizing QuickBooks to fit business needs.",
+          },
+          {
+            title: "QuickBooks Troubleshooting and Support",
+            href: "/services/",
+            description: "Providing support and troubleshooting QuickBooks.",
+          },
+          {
+            title: "QuickBooks Data Migration",
+            href: "/services/",
+            description: "Migrating financial data to QuickBooks.",
+          },
+          
+          
+        ],
+      },
+
+      {
+        title: "QuickBooks",
+        href: "/services/quickbooks",
+        description: "Reach and engage your target audience",
+        submenu: [
+          {
+            title: "Bookkeeping & Accounting",
+            href: "/services/quickbooks/bookkeeping-and-accounting",
+            description: "Setting up QuickBooks for businesses.",
+          },
+          {
+            title: "QuickBooks & Xero Expertise",
+            href: "/services/quickbooks/quickbooks-and-xero-expertise",
+            description: "Training clients on QuickBooks and Xero.",
+          },
+          {
+            title: "Financial Management",
+            href: "/services/quickbooks/financial-managment",
+            description: "Integrating QuickBooks with other software.",
+          },
+          {
+            title: "QuickBooks Customization",
+            href: "/services/quickbooks/bookkeeping-and-accounting",
+            description: "Customizing QuickBooks to fit business needs.",
+          },
+          {
+            title: "Account Clean-up",
+            href: "/services/quickbooks/account-clean-up",
+            description: "Troubleshooting and resolving QuickBooks issues.",
+          },
+          {
+            title: "E-commerce Accounting",
+            href: "/services/quickbooks/ecommerce-accounting",
+            description: "Migrating financial data to QuickBooks.",
+          },
+          {
+            title: "Tax Preparation",
+            href: "/services/quickbooks/tax-preparation",
+            description: "Preparing taxes using QuickBooks.",
+          },
+          {
+            title: "Payroll Processing",
+            href: "/services/quickbooks/payroll-processing2",
+            description: "Managing payroll through QuickBooks.",
+          },
+          {
+            title: "Financial Reporting",
+            href: "/services/quickbooks/financial-reporting",
+            description: "Generating financial reports with QuickBooks.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Portfolio",
+    href: "/portfolio",
+  },
+  {
+    title: "About",
+    href: "/about",
+  },
+  {
+    title: "Contact",
+    href: "/contact",
   },
 ];
